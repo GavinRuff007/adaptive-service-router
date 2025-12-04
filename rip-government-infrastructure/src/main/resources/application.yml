@@ -1,2 +1,2 @@
 provider:
-  type: astan   # یا gsb یا sandbox
+  type: "sandbox"   # یا gsb یا sandbox

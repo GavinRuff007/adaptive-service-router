@@ -1,4 +1,3 @@
-# service-integration-platform
 
 ---
 

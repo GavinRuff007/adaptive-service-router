@@ -9,7 +9,6 @@
   <img src="https://img.shields.io/badge/Architecture-Clean%20%26%20Hexagonal-4CAF50?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Java-21-007396?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Spring%20Boot-3.4+-6DB33F?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Domain-Driven%20Design-DDD-blue?style=for-the-badge"/>
 </p>
 
 ---
@@ -245,11 +244,3 @@ PRs, forks, suggestions, and feature requests are warmly welcomed.
 ## ⭐ If you like this architecture, consider giving the repository a star!
 
 ---
-
-اگر بخواهی می‌توانم:
-
-✅ README را **به فارسی** هم بنویسم
-✅ **diagram Mermaid** مثل پروژه‌های Netflix اضافه کنم
-✅ Badgeهای حرفه‌ای GitHub (test coverage, build status، release version) اضافه کنم
-✅ یک **logo حرفه‌ای** برای پروژه طراحی کنم
-فقط بگو!

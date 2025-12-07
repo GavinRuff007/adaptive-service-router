@@ -14,7 +14,6 @@
     <artifactId>rip-government-domain</artifactId>
     <packaging>jar</packaging>
 
-    <!-- مهم: Domain هیچ وابستگی‌ای ندارد -->
     <dependencies>
     </dependencies>
 

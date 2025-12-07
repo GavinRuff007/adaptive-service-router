@@ -12,7 +12,7 @@ public class RoutingCivilRegistryProvider implements CivilRegistryProviderPort {
 
     private final Map<String, CivilRegistryProviderPort> providers;
 
-    @Value("${provider.active:sandbox}")
+    @Value("${provider.type}")
     private String activeProvider;
 
     public RoutingCivilRegistryProvider(Map<String, CivilRegistryProviderPort> providers) {

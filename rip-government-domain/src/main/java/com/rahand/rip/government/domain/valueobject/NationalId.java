@@ -5,6 +5,7 @@ import com.rahand.rip.government.domain.exception.InvalidNationalIdException;
 public record NationalId(String value) {
 
     public NationalId {
+        System.out.println("This is Error............");
         if (value == null || !value.matches("\\d{10}")) {
             throw new InvalidNationalIdException("کد ملی باید ۱۰ رقمی باشد: " + value);
         }

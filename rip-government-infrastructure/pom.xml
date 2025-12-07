@@ -9,14 +9,13 @@
     <parent>
         <groupId>com.rahand.rip</groupId>
         <artifactId>rip-government-service</artifactId>
-        <version>1.0.0</version>
+        <version>0</version>
     </parent>
 
     <artifactId>rip-government-infrastructure</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
-
         <dependency>
             <groupId>com.rahand.rip</groupId>
             <artifactId>rip-government-application</artifactId>
@@ -47,6 +46,49 @@
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>net.time4j</groupId>
+            <artifactId>time4j-base</artifactId>
+            <version>5.9.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.time4j</groupId>
+            <artifactId>time4j-calendar</artifactId>
+            <version>4.38</version>
+        </dependency>
+
+        <!-- OpenTelemetry -->
+        <dependency>
+            <groupId>io.opentelemetry.instrumentation</groupId>
+            <artifactId>opentelemetry-spring-boot-starter</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-sdk-extension-autoconfigure</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+
+            <!-- مهم‌ترین افزونه برای Boot Jar -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.rahand.rip.government.infrastructure.GovernmentServiceApplication</mainClass>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
 
 </project>

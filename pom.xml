@@ -12,7 +12,7 @@
 
     <groupId>com.rahand.rip</groupId>
     <artifactId>rip-government-service</artifactId>
-    <version>1.0.0</version>
+    <version>0</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -37,49 +37,27 @@
     <dependencyManagement>
         <dependencies>
 
+            <!-- ================================================================================ -->
+            <!-- This is Child Module-->
+            <!-- ================================================================================ -->
             <dependency>
                 <groupId>com.rahand.rip</groupId>
                 <artifactId>rip-government-domain</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.rahand.rip</groupId>
                 <artifactId>rip-government-application</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.rahand.rip</groupId>
                 <artifactId>rip-government-infrastructure</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <!-- ================================================================================ -->
 
-            <dependency>
-                <groupId>com.rahand.digitalSignature</groupId>
-                <artifactId>digital-signature-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.rahand.digitalSignature</groupId>
-                <artifactId>digital-signature-application</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.rahand.digitalSignature</groupId>
-                <artifactId>digital-signature-controller</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.rahand.digitalSignature</groupId>
-                <artifactId>digital-signature-service</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.rahand.digitalSignature</groupId>
-                <artifactId>digital-signature-invoker</artifactId>
-                <version>${project.version}</version>
-            </dependency>
+
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -117,25 +95,33 @@
                 <artifactId>httpclient5</artifactId>
                 <version>${apache.http.client}</version>
             </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
         </dependencies>
+
+
     </dependencyManagement>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-        </dependency>
-    </dependencies>
 
     <build>
+        <extensions>
+            <extension>
+                <groupId>fr.brouillard.oss</groupId>
+                <artifactId>jgitver-maven-plugin</artifactId>
+                <version>1.9.0</version>
+            </extension>
+        </extensions>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven.compiler.plugin.version}</version>
                 <configuration>
-
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.projectlombok</groupId>
@@ -150,6 +136,8 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
+
+
         </plugins>
     </build>
 

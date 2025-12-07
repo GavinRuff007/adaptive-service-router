@@ -4,15 +4,15 @@ import com.rahand.rip.government.application.port.input.IdentityInquiryUseCase;
 import com.rahand.rip.government.domain.entity.IdentityCheckResult;
 import com.rahand.rip.government.domain.valueobject.BirthDate;
 import com.rahand.rip.government.domain.valueobject.NationalId;
+import com.rahand.rip.government.infrastructure.api.dto.ApiResponse;
 import com.rahand.rip.government.infrastructure.api.dto.IdentityInquiryRequest;
 import com.rahand.rip.government.infrastructure.api.dto.IdentityInquiryResponse;
 import com.rahand.rip.government.infrastructure.api.mapper.IdentityResponseMapper;
+import io.opentelemetry.instrumentation.annotations.WithSpan;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
-
 
 @RestController
 @RequestMapping("/api/v1/identity")
@@ -30,18 +30,18 @@ public class IdentityInquiryController {
             description = "استعلام ثبت احوال با ورودی کدملی و تاریخ تولد"
     )
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "موفق"),
-            @ApiResponse(responseCode = "400", description = "ورودی نامعتبر"),
-            @ApiResponse(responseCode = "500", description = "خطای سرویس دهنده")
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "موفق"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "ورودی نامعتبر"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "خطای داخلی سرور")
     })
+    @WithSpan("controller:identity-check")
     @PostMapping("/check")
-    public IdentityInquiryResponse check(@RequestBody IdentityInquiryRequest request) {
+    public ApiResponse<IdentityInquiryResponse> check(@RequestBody IdentityInquiryRequest request) {
+        NationalId nationalId = new NationalId(request.getNationalId());
+        BirthDate birthDate = new BirthDate(request.getBirthDate());
 
-        IdentityCheckResult result = useCase.inquire(
-                new NationalId(request.getNationalId()),
-                new BirthDate(request.getBirthDate())
-        );
+        IdentityCheckResult result = useCase.inquire(nationalId, birthDate);
 
-        return IdentityResponseMapper.toApiResponse(result);
+        return ApiResponse.ok(IdentityResponseMapper.toApiResponse(result));
     }
 }

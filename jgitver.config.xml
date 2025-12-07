@@ -1,0 +1,15 @@
+<configuration>
+    <policy>SEMVER</policy>
+    <strategy>MAJOR_MINOR_PATCH</strategy>
+
+    <autoIncrementPatch>true</autoIncrementPatch>
+    <tagVersionPattern>v${version}</tagVersionPattern>
+
+    <useGitCommitId>true</useGitCommitId>
+    <useDirty>true</useDirty>
+
+    <nonQualifierBranches>
+        <branch>main</branch>
+        <branch>master</branch>
+    </nonQualifierBranches>
+</configuration>

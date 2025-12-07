@@ -5,6 +5,7 @@ import com.rahand.rip.government.application.port.output.CivilRegistryProviderPo
 import com.rahand.rip.government.domain.entity.IdentityCheckResult;
 import com.rahand.rip.government.domain.valueobject.BirthDate;
 import com.rahand.rip.government.domain.valueobject.NationalId;
+import io.opentelemetry.instrumentation.annotations.WithSpan;
 
 public class IdentityInquiryService implements IdentityInquiryUseCase {
 
@@ -15,6 +16,7 @@ public class IdentityInquiryService implements IdentityInquiryUseCase {
     }
 
     @Override
+    @WithSpan("application:identity-inquiry")
     public IdentityCheckResult inquire(NationalId nationalId, BirthDate birthDate) {
         return provider.fetchIdentity(nationalId, birthDate);
     }

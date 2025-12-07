@@ -1,2 +1,43 @@
 provider:
   type: astan   # یا gsb یا sandbox
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: government-service
+
+# -----------------------------
+#   OPEN TELEMETRY CONFIG
+# -----------------------------
+otel:
+  sdk:
+    disabled: false
+
+  resource:
+    attributes: "service.name=government-service"
+
+  exporter:
+    otlp:
+      # وقتی Spring Boot داخل Docker است
+      # باید از DNS شبکه استفاده کند نه localhost
+      endpoint: http://otel-collector:4317
+      protocol: grpc
+
+  traces:
+    exporter: otlp
+
+  logs:
+    exporter: otlp
+
+  metrics:
+    exporter: none
+
+management:
+  tracing:
+    enabled: false   # جلوگیری از تداخل Micrometer با OTel SDK
+
+  otlp:
+    tracing:
+      enabled: false

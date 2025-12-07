@@ -9,6 +9,7 @@ import com.rahand.rip.government.infrastructure.dto.CivilRegistryResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+
 @Component("gsbProvider")
 public class GsbCivilRegistryAdapter implements CivilRegistryProviderPort {
 
